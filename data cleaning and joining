@@ -1,0 +1,139 @@
+step-1     => first we replace fact_ts_ipass'sdistrict_code column by dim_district
+
+                                                                   -- dim_district + fact_ts_ipass  --
+
+              select 
+                 dim_district.district, 
+                 fact_ts_ipass.sector,
+                 fact_ts_ipass.investment,
+                 fact_ts_ipass.number_of_employees,
+                 fact_ts_ipass.months
+                         from 
+                            dim_district
+                                      inner join 
+                            fact_ts_ipass
+                                          ON
+                             fact_ts_ipass.dist_code=dim_district.dist_code;
+
+
+                                                                    --  dim_date   +  fact_ipass   --
+                                                                      
+            select  
+               fact_ipass.district,
+               dim_date.Mmm,
+               dim_date.quarter,
+               dim_date.fiscal_year,
+               fact_ipass.sector,
+               fact_ipass.investment,
+               fact_ipass.number_of_employees
+                          from
+                            fact_ipass 
+                                  inner join
+                            dim_date
+                                  ON
+                            fact_ipass.months=dim_date.months;
+
+
+                                                                    --  fact_stamp + dim_date   -- 
+                                                                      
+         select
+             fact_stamp.dist_code 
+             dim_date.Mmm,
+             dim_date.quarter,
+             dim_date.fiscal_year,
+             fact_stamp.documents_registered_cnt,
+             fact_stamp.documents_registered_rev,
+             fact_stamp.estamps_challans_cnt,
+             fact_stamp.estamps_challans_rev
+                 from 
+                     dim_date 
+                         inner join 
+                     fact_stamp
+                        on 
+                fact_stamp.month=dim_date.months;
+
+
+                                                                   -- fact_stamp + dim_district --
+       select 
+           dim_district.district, 
+           fact_stamps.Mmm,
+           fact_stamps.quarter,
+           fact_stamps.fiscal_year,
+           fact_stamps.documents_registered_cnt,
+           fact_stamps.documents_registered_rev,
+           fact_stamps.estamps_challans_cnt,
+           fact_stamps.estamps_challans_rev
+                from 
+                    fact_stamps
+                       inner join
+                    dim_district
+                       on
+                    fact_stamps.dist_code=dim_district.dist_code;
+
+
+                                                               --  dim date  +  fact_transport  --
+
+      select 
+
+           fact_transport.dist_code, 
+           fact_transport.fuel_type_petrol,
+           fact_transport.fuel_type_diesel,
+           fact_transport.fuel_type_electric,
+           fact_transport.fuel_type_others,
+           fact_transport.vehicleClass_MotorCycle,
+           fact_transport.vehicleClass_MotorCar,
+           fact_transport.vehicleClass_AutoRickshaw,
+           fact_transport.vehicleClass_Agriculture,
+           fact_transport.vehicleClass_others,
+           fact_transport.seatCapacity_1_to_3,
+           fact_transport.seatCapacity_4_to_6,
+           fact_transport.seatCapacity_above_6,
+           fact_transport.Brand_new_vehicles,
+           fact_transport.Pre_owned_vehicles,
+           fact_transport.category_Non_Transport,
+           fact_transport.category_Transport,
+           dim_date.Mmm,
+           dim_date.quarter,
+           dim_date.fiscal_year
+             from 
+               fact_transport 
+                   inner join
+               dim_date 
+                   on
+               fact_transport.month=dim_date.months;
+
+
+
+
+                                                        --  dim_dist + fact_transport    --
+
+    select 
+
+         dim_district.district, 
+         fact_transports.Mmm,
+         fact_transports.quarter,
+         fact_transports.fiscal_year,
+         fact_transports.fuel_type_petrol,
+         fact_transports.fuel_type_diesel,
+         fact_transports.fuel_type_electric,
+         fact_transports.fuel_type_others,
+         fact_transports.vehicleClass_MotorCycle,
+         fact_transports.vehicleClass_MotorCar,
+         fact_transports.vehicleClass_AutoRickshaw,
+         fact_transports.vehicleClass_Agriculture,
+         fact_transports.vehicleClass_others,
+         fact_transports.seatCapacity_1_to_3,
+         fact_transports.seatCapacity_4_to_6,
+         fact_transports.seatCapacity_above_6,
+         fact_transports.Brand_new_vehicles,
+         fact_transports.Pre_owned_vehicles,
+         fact_transports.category_Non_Transport,
+         fact_transports.category_Transport
+             from 
+               fact_transports 
+                   inner join
+               dim_district
+                   on
+               fact_transports.dist_code=dim_district.dist_code ;
+
+
