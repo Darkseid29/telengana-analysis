@@ -1,1 +1,411 @@
+Objective:  
+• Explore Stamp Registration, Transportation and Ts-Ipass Datasets.  Understand their attributes, categories and time period.
+• Analyze trends and patterns within each department.
+• Identify growth opportunities and areas needing attention.
+• Find correlation among these departments and report the overall growth of the state through insights and relevant visuals such as shape maps.      
+--------------------------------------------------------------------------------------------------------------------------------------------
+key questions--
+----------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Transportation
+ 1. Investigate whether there is any correlation between vehicle sales and specific months or seasons in different districts. Are there any months or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only) 
+
+query -----
+SELECT
+    a.district,
+    a.fiscal_year AS fiscal_year_2019,
+    a.fuel_vahicle_sales AS fuel_vehicle_sales_apr,
+    b.sums AS fuel_vehicle_sales_may,
+    c.sums AS fuel_vehicle_sales_jun,
+    d.sums AS fuel_vehicle_sales_jul,
+    e.sums AS fuel_vehicle_sales_aug,
+    f.sums AS fuel_vehicle_sales_sep,
+    o.sums AS fuel_vehicle_sales_oct,
+    n.sums AS fuel_vehicle_sales_nov,
+    dd.sums AS fuel_vehicle_sales_dec,
+    j.sums AS fuel_vehicle_sales_jan,
+     ff.sums AS fuel_vehicle_sales_feb,
+    m.sums AS fuel_vehicle_sales_mar
+FROM
+    (SELECT
+        district,
+        Mmm,
+        fiscal_year,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS fuel_vahicle_sales
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'apr'
+    GROUP BY
+        district, Mmm, fiscal_year) AS a
+INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'may'
+    GROUP BY
+        district, Mmm, fiscal_year) AS b
+ON
+    a.district = b.districts
+INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'jun'
+    GROUP BY
+        district, Mmm, fiscal_year) AS c
+ON
+    a.district = c.districts
+    INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'jul'
+    GROUP BY
+        district, Mmm, fiscal_year) AS d
+        on
+         a.district = d.districts
+         INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'aug'
+    GROUP BY
+        district, Mmm, fiscal_year) AS e
+ON
+    a.district = e.districts
+    INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'sep'
+    GROUP BY
+        district, Mmm, fiscal_year) AS f
+        on
+         a.district = f.districts
+          INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'oct'
+    GROUP BY
+        district, Mmm, fiscal_year) AS o
+ON
+    a.district = o.districts
+    INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'nov'
+    GROUP BY
+        district, Mmm, fiscal_year) AS n
+        on
+         a.district = n.districts
+          INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'dec'
+    GROUP BY
+        district, Mmm, fiscal_year) AS dd
+ON
+    a.district = dd.districts
+    INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'jan'
+    GROUP BY
+        district, Mmm, fiscal_year) AS j
+        on
+         a.district = j.districts
+          INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'feb'
+    GROUP BY
+        district, Mmm, fiscal_year) AS ff
+ON
+    a.district = ff.districts
+    INNER JOIN
+    (SELECT
+        district AS districts,
+        SUM(fuel_type_electric + fuel_type_others + fuel_type_petrol + fuel_type_diesel) AS sums
+    FROM
+        fact_transport
+    WHERE
+        fiscal_year = 2019
+        AND Mmm = 'mar'
+    GROUP BY
+        district, Mmm, fiscal_year) AS m
+        on
+         a.district = m.districts;
+
+6. How does the distribution of vehicles vary by vehicle class (MotorCycle, MotorCar, AutoRickshaw, Agriculture) across different districts? Are there any districts with a predominant preference for a specific vehicle class? Consider FY 2022 for analysis
+
+select 
+      district,
+      sum(vehicleClass_Agriculture),
+      sum(vehicleClass_AutoRickshaw), 
+      sum(vehicleClass_MotorCar),
+      sum(vehicleClass_MotorCycle)
+ FROM
+      fact_transport where fiscal_year=2022 group by district;
+
+
+district          	sum(vehicleClass_Agriculture)	sum(vehicleClass_AutoRickshaw)  sum(vehicleClass_MotorCar)	  sum(vehicleClass_MotorCycle)	
+Wanaparthy                	985	372	1194	8771	
+Jayashankar Bhupalpally   	1928	218	1343	9225	
+Mahabubnagar	              937	1130	3300	17977	
+Siddipet	2437	524	3254	17401	
+Nagarkurnool	1556	366	2066	12229	
+Nirmal	989	295	1581	10984	
+Jagtial	858	272	2055	13639	
+Jogulamba Gadwal	868	116	899	10300	
+Peddapalli	705	382	2205	10818	
+Vikarabad	1814	2046	5211	23116	
+Mancherial	400	550	2218	11603	
+Nalgonda	2599	964	4927	27942	
+Suryapet	2188	739	3038	19165	
+Karimnagar	999	1042	4818	19411	
+Jangoan	1225	397	1177	8617	
+Warangal	681	1331	2937	17770	
+Adilabad	467	368	1416	10410	
+Bhadradri Kothagudem	2013	1388	3157	17022	
+Mahabubabad	906	680	1155	11046	
+Khammam	2121	2690	5880	27385	
+Kumurambheem Asifabad	160	286	479	6433	
+Nizamabad	1181	1011	5824	28105	
+Medak	1579	610	2347	11663	
+Sangareddy	1570	3381	14565	40784	
+Medchal_Malkajgiri	261	83	61071	164626	
+
+
+
+
+1. How does the revenue generated from document registration vary across districts in Telangana?  List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022
+answer-
+
+select distinct district,sum(documents_registered_rev) from fact_stamp group by district order by sum(documents_registered_rev) desc;
+
+
+district	           sum(documents_registered_rev)   	
+Rangareddy	           108198682809	
+Medchal_Malkajgiri  	 64071382839	
+Hyderabad            	 38396743983	
+Sangareddy	           22024502771	
+Hanumakonda         	 7927494100	
+Yadadri Bhuvanagiri	   5973744502	
+Khammam              	 5606141586	
+Nalgonda	             4521634367	
+Nizamabad	             4046937361	
+Karimnagar	           4024475054	
+Mahabubnagar	         3186731550	
+Suryapet	             2902358766	
+Siddipet	             2625072577	
+Medak	                 1765752735	
+Peddapalli	           1740644457	
+Mancherial	           1668092668	
+Jagtial              	1666081307	
+Kamareddy	             1396196267	
+Vikarabad	             1381189602	
+Nagarkurnool	         1358262744	
+Jangoan	               1329898858	
+Rajanna Sircilla	     1169030429	
+Wanaparthy	           1126819540	
+Adilabad	              1066971491	
+Mahabubabad	           1058624771	
+
+
+growth analysis
+
+
+select
+    district,
+((sum(CASE when fiscal_year=2022 then documents_registered_rev else 0 end)-sum(case when fiscal_year=2019 then documents_registered_rev else 0 end))/sum(case when fiscal_year=2019 then documents_registered_rev else 0 end))*100 as revenuegrowth from fact_stamp where fiscal_year in (2019,2022) GROUP by district order by revenuegrowth;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. How does the revenue generated from document registration compare to the revenue generated from e-stamp challans across districts? List down the top 5 districts where e-stamps revenue contributes significantly more to the revenue than the documents in FY 2022? 
+
+select 
+      district,
+      sum(documents_registered_rev),
+      sum(estamps_challans_rev)
+            from 
+              fact_stamp  
+                 group by district
+                 order by sum(documents_registered_rev) desc,sum(estamps_challans_rev) desc;
+output-
+
+district	              sum(documents_registered_rev)             	sum(estamps_challans_rev)   	
+Rangareddy	                  108198682809	                               81336993463	
+Medchal_Malkajgiri	          64071382839                           	     48819368222	
+Hyderabad	                    38396743983	                                  28652397786	
+Sangareddy	                  22024502771                                 	16708219605	
+Hanumakonda                 	7927494100                                    5751116148	
+Yadadri Bhuvanagiri         	5973744502	                                  4254388510	
+Khammam	                      5606141586	                                  4208231368	
+Nalgonda	                    4521634367	                                  3009297574	
+Nizamabad                   	4046937361	                                  3047094971	
+Karimnagar	                  4024475054	                                  2989066355	
+Mahabubnagar	                3186731550	                                  2236920432	
+Suryapet	                    2902358766                                   	2092895272	
+Siddipet                    	2625072577	                                  1947542406	
+Medak                       	1765752735                                   	1250558303	
+Peddapalli	                  1740644457                                    1271068835	
+Mancherial	                  1668092668	                                  1246862431	
+Jagtial	                      1666081307	                                  1202617958	
+Kamareddy	                    1396196267                                    982520443	
+Vikarabad                    	1381189602	                                  995418682	
+Nagarkurnool                	1358262744                                    980926364	
+Jangoan                      	1329898858	                                  842885890	
+Rajanna Sircilla             	1169030429                                   	825570704	
+Wanaparthy                  	1126819540	                                  830193698	
+Adilabad	                    1066971491	                                  831038256	
+Mahabubabad                  	1058624771                                    779396646	
+
+ List down the top 5 districts where e-stamps revenue contributes significantly more to the revenue than the documents in FY 2022?  
+
+SELECT
+      a.district, a.sum_documents_registered_rev, 
+      a.sum_estamps_challans_rev 
+          FROM
+                 ( SELECT
+                        district,
+                        SUM(documents_registered_rev) AS sum_documents_registered_rev,
+                        SUM(estamps_challans_rev) AS sum_estamps_challans_rev
+                                   FROM
+                                       fact_stamp WHERE fiscal_year = 2022 GROUP BY district ) AS a
+                                       WHERE sum_estamps_challans_rev > sum_documents_registered_rev
+                                        order by sum_estamps_challans_rev desc limit 5;
+
+output--
+
+district	                    sum_documents_registered_rev	     sum_estamps_challans_rev   	
+Rangareddy	                       37697750946	                  38349357618	
+Hyderabad                         	14266012441	                  14374315032	
+Hanumakonda                       	2817238587	                  2846856844	
+Yadadri Bhuvanagiri                	2167480603	                  2185270667	
+Khammam                           	1971647539	                    2002220314
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+4. Categorize districts into three segments based on their stamp registration revenue generation during the fiscal year 2021 to 2022. 
+
+
+select 
+       district , 
+       sum(estamps_challans_rev)
+             from 
+                 fact_stamp
+                 group by district 
+                  order by  sum(estamps_challans_rev) desc limit 4;
+
+
+district	             sum(estamps_challans_rev)   	
+Rangareddy	           81336993463	
+Medchal_Malkajgiri	   48819368222	
+Hyderabad	             28652397786	
+Sangareddy	           16708219605
+
+	
+
+
+select  
+         district ,
+         sum(estamps_challans_rev)
+                from 
+                    fact_stamp
+                    group by district
+                    order by  sum(estamps_challans_rev) desc limit 13 offset 4;
+
+
+district	                sum(estamps_challans_rev)   	
+Hanumakonda	               5751116148	
+Yadadri Bhuvanagiri	       4254388510	
+Khammam	                   4208231368	
+Nizamabad	                 3047094971	
+Nalgonda	                 3009297574	
+Karimnagar	               2989066355	
+Mahabubnagar	             2236920432	
+Suryapet	                 2092895272	
+Siddipet	                 1947542406	
+Peddapalli	               1271068835	
+Medak                    	1250558303	
+Mancherial	               1246862431	
+Jagtial	                   1202617958	
+
+
+
+
+select 
+       district ,
+       sum(estamps_challans_rev)
+            from 
+                  fact_stamp
+                  group by district
+                  order by  sum(estamps_challans_rev) desc limit 15 offset 17;
+
+
+district	            sum(estamps_challans_rev)   	
+Vikarabad	             995418682	
+Kamareddy	             982520443	
+Nagarkurnool           980926364	
+Jangoan	               842885890	
+Adilabad	             831038256	
+Wanaparthy	           830193698	
+Rajanna Sircilla	     825570704	
+Mahabubabad	           779396646	
+Jogulamba Gadwal	     709344353	
+Nirmal	               707305113	
+Bhadradri Kothagudem	 616009645	
+Narayanpet	           517604092	
+Warangal	             484464966	
+Mulugu	               408743315	
+Kumurambheem Asifabad 	145692452	
+
 
