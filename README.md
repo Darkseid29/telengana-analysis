@@ -1,8 +1,12 @@
-# telengana-growth-analysis #
+objective--
 
-Telangana Growth Analysis 📈🔍
-Welcome to the "Telangana Growth Analysis" project repository! In this data-driven endeavor, we delve into the vibrant state of Telangana, India, to uncover the intricacies of its growth and development journey. Leveraging the power of data analysis through Power BI and SQL, this project offers a comprehensive exploration of various facets that contribute to the state's progress.
-The project was on the Telangana Growth in which we have to analyse the data and provide important and meaningful insights to the Telagana Government. Excited to showcase my Project-building skills in this real-world. Telangana is one of the fastest growing states in india and one of the states with an open data policy. They have published all their data online.
+Welcome to the "Telangana Growth Analysis" project repository! In this data-driven initiative, we embark on a comprehensive exploration of the dynamic state of Telangana, India, aiming to unravel the intricacies of its journey towards growth and development. Employing the formidable tools of data analysis, including Power BI and SQL, this project offers an in-depth examination of various factors that contribute to the state's advancement.
+
+Our mission in this project is to meticulously analyze Telangana's growth data and provide valuable, insightful findings for the Telangana Government. We are enthusiastic about demonstrating our project-building expertise in a real-world context.
+
+Telangana stands as one of India's fastest-growing states, distinguished by its transparent open data policy. All relevant data has been made available online, allowing us to access and analyze it effectively. This endeavor holds promise in delivering actionable insights to aid in Telangana's continued progress.
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------
 PROJECT HIGHLIGHT--
 
