@@ -275,6 +275,115 @@ Sangareddy	                  8193	                  1558	                   5358
 Kumurambheem Asifabad	         1834	                   34	                   10112	          1723                        81	6779
 Khammam	                          8058	                  149	                     42127	           8030                  	759	31233
 
+                                      above table name is q7
+select 
+       district,
+       diesel_vehicle_2021,
+       diesel_vehicle_2022,
+       diesel_vehicle_2022_growth
+           from 
+                q7
+                 order by diesel_vehicle_2022_growth desc limit 3;
+
+
+district	diesel_vehicle_2021	diesel_vehicle_2022	diesel_vehicle_2022_growth   	
+Karimnagar	5034	                10644	                 111.442	
+Sangareddy	8193	                9275	                 13.2064	
+Rangareddy	24711	                27843	                 12.6745	
+
+
+
+select 
+           district,
+           diesel_vehicle_2021,
+           diesel_vehicle_2022,
+           diesel_vehicle_2022_growth 
+                from 
+                     q7
+                     order by diesel_vehicle_2022_growth asc limit 3;
+
+
+district	diesel_vehicle_2021	diesel_vehicle_2022	diesel_vehicle_2022_growth   	
+Warangal	5717	                2971	               -48.0322	
+Mahabubabad	4187	                3170	               -24.2895	
+Jangoan 	3155	                2461	               -21.9968	
+
+
+
+select 
+        district,
+        petrol_vehicle_2021, 
+        petrol_vehicle_2022,
+        petrol_vehicle_2022_growth
+             from
+                q7 
+                order by petrol_vehicle_2022_growth desc limit 3;
+
+
+district	      petrol_vehicle_2021	petrol_vehicle_2022	petrol_vehicle_2022_growth   	
+Rangareddy	      184204	                200289	                 8.73217	
+Hyderabad	      228817	                231166	                 1.02658	
+Medchal_Malkajgiri    201947	                200121	                -0.904198	
+
+
+
+
+
+
+
+select 
+          district,
+          petrol_vehicle_2021,
+          petrol_vehicle_2022,
+          petrol_vehicle_2022_growth
+              from
+                  q7
+                  order by petrol_vehicle_2022_growth asc limit 3;
+
+
+district	petrol_vehicle_2021	petrol_vehicle_2022	petrol_vehicle_2022_growth   	
+Warangal	         36035	            19704	       -45.3198	
+Nirmal	                 19746	            11640	       -41.0514	
+Jagtial	                 24945	            14836	        -40.5252	
+
+
+
+
+
+
+select
+    district,
+    electric_vehicle_2021,
+    electric_vehicle_2022,
+    electric_vehicle_2022_growth
+      from
+         q7 
+         order by electric_vehicle_2022_growth desc limit 3;
+
+district	         electric_vehicle_2021	electric_vehicle_2022	electric_vehicle_2022_growth   	
+Khammam 	         149	                759	                409.396	
+Bhadradri Kothagudem	 76	                290	                281.579	
+Suryapet	          193	                670	                 247.15	
+
+
+
+
+select 
+     district,
+     electric_vehicle_2021,
+     electric_vehicle_2022,
+     electric_vehicle_2022_growth 
+          from 
+               q7 
+               order by electric_vehicle_2022_growth asc limit 3;
+
+
+district	     electric_vehicle_2021	electric_vehicle_2022	electric_vehicle_2022_growth   	
+Wanaparthy	     146	                 154	                 5.47945	
+Rajanna Sircilla     362	                 416	                 14.9171	
+Mancherial	     198	                 236	                 19.1919	
+
+
 
 
 1. How does the revenue generated from document registration vary across districts in Telangana?  List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022
