@@ -199,31 +199,31 @@ select
 
 
 district          	sum(vehicleClass_Agriculture)	sum(vehicleClass_AutoRickshaw)  sum(vehicleClass_MotorCar)	  sum(vehicleClass_MotorCycle)	
-Wanaparthy                	985	                      372	1194	8771	
-Jayashankar Bhupalpally   	1928	                      218	1343	9225	
-Mahabubnagar	                937	                      1130	3300	17977	
-Siddipet	                2437	                      524	3254	17401	
-Nagarkurnool	                1556	                      366	2066	12229	
-Nirmal	                        989	                      295	1581	10984	
-Jagtial	                        858	                      272	2055	13639	
-Jogulamba Gadwal	        868	                      116	899	10300	
-Peddapalli	                705	                      382	2205	10818	
-Vikarabad	                1814	                      2046	5211	23116	
-Mancherial	                 400	                       550	2218	11603	
-Nalgonda	                 2599	                         964	4927	27942	
-Suryapet	                 2188                         	739	3038	19165	
-Karimnagar	               999	                       1042	4818	19411	
-Jangoan	                         1225	                      397	1177	8617	
-Warangal	                 681	                      1331	2937	17770	
-Adilabad	                 467	                      368	1416	10410	
-Bhadradri Kothagudem	         2013	                      1388	3157	17022	
-Mahabubabad	                 906	                      680	1155	11046	
-Khammam	                         2121	                      2690	5880	27385	
-Kumurambheem Asifabad	         160	                      286	479	6433	
-Nizamabad	                 1181	                      1011	5824	28105	
-Medak	                         1579	                       610	2347	11663	
-Sangareddy	                  1570	                       3381	14565	40784	
-Medchal_Malkajgiri	          261	                       83	61071	164626	
+Wanaparthy                	985	                      372	                        1194	                     8771	
+Jayashankar Bhupalpally   	1928	                      218	                        1343	                     9225	
+Mahabubnagar	                937	                      1130	                        3300	                     17977	
+Siddipet	                2437	                      524	                        3254	                     17401	
+Nagarkurnool	                1556	                      366	                        2066	                     12229	
+Nirmal	                        989	                      295	                        1581	                     10984	
+Jagtial	                        858	                      272	                        2055	                     13639	
+Jogulamba Gadwal	        868	                      116	                        899	                     10300	
+Peddapalli	                705	                      382	                        2205	                     10818	
+Vikarabad	                1814	                      2046	                        5211	                     23116	
+Mancherial	                 400	                      550	                        2218	                     11603	
+Nalgonda	                 2599	                      964	                        4927	                     27942	
+Suryapet	                 2188                        739	                        3038	                     19165	
+Karimnagar	               999	                     1042	                        4818	                     19411	
+Jangoan	                         1225	                      397	                        1177	                     8617	
+Warangal	                 681	                      1331	                        2937	                      17770	
+Adilabad	                 467	                      368	                        1416	                     10410	
+Bhadradri Kothagudem	         2013	                      1388	                        3157	                     17022	
+Mahabubabad	                 906	                      680	                        1155	                     11046	
+Khammam	                         2121	                      2690	                        5880	                     27385	
+Kumurambheem Asifabad	         160	                      286	                        479	                     6433	
+Nizamabad	                 1181	                      1011	                         5824	                     28105	
+Medak	                         1579	                       610	                        2347	                     11663	
+Sangareddy	                  1570	                       3381	                        14565	                     40784	
+Medchal_Malkajgiri	          261	                       83	                        61071	                     164626	
 
 
 
