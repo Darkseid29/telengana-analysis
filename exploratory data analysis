@@ -11,9 +11,10 @@ key questions--
 -------------------------------------------------------------------------------------------------------------------------------------
 
 Transportation
- 1. Investigate whether there is any correlation between vehicle sales and specific months or seasons in different districts. Are there any months or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only) 
 
-query -----
+ 5. Investigate whether there is any correlation between vehicle sales and specific months or seasons in different districts. Are there any months or seasons that consistently show higher or lower sales rate, and if yes, what could be the driving factors? (Consider Fuel-Type category only) 
+
+--query
 SELECT
     a.district,
     a.fiscal_year AS fiscal_year_2019,
@@ -186,6 +187,8 @@ ON
         on
          a.district = m.districts;
 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
 6. How does the distribution of vehicles vary by vehicle class (MotorCycle, MotorCar, AutoRickshaw, Agriculture) across different districts? Are there any districts with a predominant preference for a specific vehicle class? Consider FY 2022 for analysis
 
 select 
@@ -227,7 +230,7 @@ Medchal_Malkajgiri	          261	                       83	                     
 
 
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 7. List down the top 3 and bottom 3 districts that have shown the highest and lowest vehicle sales growth during FY 2022 compared to FY 2021? (Consider and compare categories: Petrol, Diesel and Electric)  
 
 
@@ -248,6 +251,7 @@ FROM (
         SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_diesel ELSE 0 END) AS diesel_vehicle_2022,
         SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_electric ELSE 0 END) AS electric_vehicle_2022,
         SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_petrol ELSE 0 END) AS petrol_vehicle_2022;
+
 district	       diesel_vehicle_2021	electric_vehicle_2021	petrol_vehicle_2021	diesel_vehicle_2022	electric_vehicle_2022	petrol_vehicle_2022
 Jangoan	                         3155	                 73	                  13843	            2461	                    179	         9520
 Jayashankar Bhupalpally      	 3904	                 111	                  15788	             3169	                    227   	 1027
@@ -384,8 +388,9 @@ Rajanna Sircilla     362	                 416	                 14.9171
 Mancherial	     198	                 236	                 19.1919	
 
 
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------
 fact_ipass
-
 
 8. List down the top 5 sectors that have witnessed the most significant investments in FY 2022. 
 
@@ -408,7 +413,7 @@ Medchal_Malkajgiri	 2768.5223
 Mahabubnagar	         1788.4003	
 Medak	                 1496.2658	
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 9. List down the top 3 districts that have attracted the most significant sector investments during FY 2019 to 2022? What factors could have led to the substantial investments in these particular districts?  
  
 
@@ -429,7 +434,7 @@ Fertlizers Organic and Inorganic,Pesticides,Insect...	      5322.5543
 Pharmaceuticals and Chemicals	                              4320.9003	
 Engineering	                                              2756.7421	
 
-
+---------------------------------------------------------------------------------------------------------------------------------------------
 1. How does the revenue generated from document registration vary across districts in Telangana?  List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022
 answer-
 
