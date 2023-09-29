@@ -384,6 +384,50 @@ Rajanna Sircilla     362	                 416	                 14.9171
 Mancherial	     198	                 236	                 19.1919	
 
 
+fact_ipass
+
+
+8. List down the top 5 sectors that have witnessed the most significant investments in FY 2022. 
+
+
+
+select 
+       district,
+       sum(investment) as inverstment_in_cr_2022
+          from 
+              fact_ipass
+               where fiscal_year=2022
+               group by district 
+               order by inverstment_in_cr_2022  desc limit 5;
+
+
+district	         inverstment_in_cr_2022   	
+Rangareddy	         8663.7938	
+Sangareddy	         4602.7137	
+Medchal_Malkajgiri	 2768.5223	
+Mahabubnagar	         1788.4003	
+Medak	                 1496.2658	
+
+
+9. List down the top 3 districts that have attracted the most significant sector investments during FY 2019 to 2022? What factors could have led to the substantial investments in these particular districts?  
+ 
+
+select 
+         sector,
+         sum(investment) as inverstment_in_cr_2019_to_2022
+             from 
+                fact_ipass
+                where fiscal_year in  (2019,2022)
+                group by sector
+                order by inverstment_in_cr_2019_to_2022  desc limit 5;
+
+
+sector	                                                     inverstment_in_cr_2019_to_2022   	
+Real Estate,Industrial Parks and IT Buildings	              26610.7422	
+Plastic and Rubber	                                      6629.9473	
+Fertlizers Organic and Inorganic,Pesticides,Insect...	      5322.5543	
+Pharmaceuticals and Chemicals	                              4320.9003	
+Engineering	                                              2756.7421	
 
 
 1. How does the revenue generated from document registration vary across districts in Telangana?  List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022
