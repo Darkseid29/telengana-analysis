@@ -228,6 +228,55 @@ Medchal_Malkajgiri	          261	                       83	                     
 
 
 
+7. List down the top 3 and bottom 3 districts that have shown the highest and lowest vehicle sales growth during FY 2022 compared to FY 2021? (Consider and compare categories: Petrol, Diesel and Electric)  
+
+
+SELECT
+    district,
+    SUM(diesel_vehicle_2021) AS diesel_vehicle_2021,
+    SUM(electric_vehicle_2021) AS electric_vehicle_2021,
+    SUM(petrol_vehicle_2021) AS petrol_vehicle_2021,
+    SUM(diesel_vehicle_2022) AS diesel_vehicle_2022,
+    SUM(electric_vehicle_2022) AS electric_vehicle_2022,
+    SUM(petrol_vehicle_2022) AS petrol_vehicle_2022
+FROM (
+    SELECT 
+        district,                   
+        SUM(CASE WHEN fiscal_year = 2021 THEN fuel_type_diesel ELSE 0 END) AS diesel_vehicle_2021,
+        SUM(CASE WHEN fiscal_year = 2021 THEN fuel_type_electric ELSE 0 END) AS electric_vehicle_2021,
+        SUM(CASE WHEN fiscal_year = 2021 THEN fuel_type_petrol ELSE 0 END) AS petrol_vehicle_2021,
+        SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_diesel ELSE 0 END) AS diesel_vehicle_2022,
+        SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_electric ELSE 0 END) AS electric_vehicle_2022,
+        SUM(CASE WHEN fiscal_year = 2022 THEN fuel_type_petrol ELSE 0 END) AS petrol_vehicle_2022;
+district	       diesel_vehicle_2021	electric_vehicle_2021	petrol_vehicle_2021	diesel_vehicle_2022	electric_vehicle_2022	petrol_vehicle_2022
+Jangoan	                         3155	                 73	                  13843	            2461	                    179	         9520
+Jayashankar Bhupalpally      	 3904	                 111	                  15788	             3169	                    227   	 1027
+Mahabubnagar	                 6029	                 324	                  31344	              4790	                    387	          20274
+Siddipet	                 5439	                 445	                   27173	     4968	                    773	          19150
+Nagarkurnool	                 5964	                  105	                   19215	     5167	                    171 	14210
+Nirmal	                         2613	                 355	                   19746	     2576	                    672	        11640
+Jagtial	                         2872	                 409	                   24945	     2261	                     642	14836
+Jogulamba Gadwal	         2309               	52	                    14239	     2336	                     84	          10911
+Peddapalli	                 3185	                219	                    17872	     2507	                     404	12308
+Vikarabad	                 6451	                383	                    37097	      6155	                     561	26821
+Mancherial	                 3186	                198	                    18852	       2891	                     236	13295
+Nalgonda	                 9212	                395	                    41243	        7840	                     555	31574
+Suryapet	                  8059             	193	                   28315	         7337	                      670	21145
+Rajanna Sircilla	         2219               	362	                  14287                	1954	                     416	8743
+Kamareddy	                 3001	                 183	                  26055           	3225	                     273	17043
+Warangal	                 5717	                 419	                  36035           	2971	                      649	19704
+Rangareddy	                 24711                	5918	                  184204         	27843	                      13606	200289
+Wanaparthy	                 2686	                146	                  13584         	2745	                     154	9641
+Hyderabad	                 21195	               8929	                  228817	        20019	                     20026	231166
+Medchal_Malkajgiri	         27153	                7086                      201947	         27592	                     13716	200121
+Yadadri Bhuvanagiri	          4878	                 229	                  22308             	4805	                     277	16971
+Medak	                          4378	                 185	                 18208	                 4077	                     319	13218
+Sangareddy	                  8193	                  1558	                   53583	         9275	                     3039	49507
+Kumurambheem Asifabad	         1834	                   34	                   10112	          1723                        81	6779
+Khammam	                          8058	                  149	                     42127	           8030                  	759	31233
+
+
+
 1. How does the revenue generated from document registration vary across districts in Telangana?  List down the top 5 districts that showed the highest document registration revenue growth between FY 2019 and 2022
 answer-
 
